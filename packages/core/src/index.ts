@@ -97,7 +97,7 @@ export type NumberSchema = CommonSchema & {
  */
 export type StringSchema = CommonSchema & {
   type: 'string';
-  format?: 'textarea' | 'color' | 'date' | 'datetime' | 'datetime-local' | 'time' | 'month' | 'email' | 'uri' | 'url' | 'week' | 'hostname' | 'ipv4' | 'ipv6' | 'code' | 'markdown' | 'base64' | 'select' | 'radiobox' | 'json';
+  format?: 'textarea' | 'color' | 'date' | 'datetime' | 'datetime-local' | 'time' | 'month' | 'email' | 'uri' | 'url' | 'week' | 'hostname' | 'ipv4' | 'ipv6' | 'code' | 'markdown' | 'base64' | 'image' | 'select' | 'radiobox' | 'json';
   enum?: string[];
   minLength?: number;
   maxLength?: number;
@@ -1134,3 +1134,15 @@ export type Dragula = typeof dragula
  * @public
  */
 export type HLJS = typeof hljs
+
+declare type UploadSuccessCallback = (fileUrl: string) => void;
+
+declare type UploadErrorCallback = (error: Error) => void;
+
+/**
+ * @public
+ */
+export interface UploadCallbacks {
+    fileGot?: (file: File | Blob, uploadSuccess: UploadSuccessCallback, uploadError: UploadErrorCallback) => void;
+    fileUploaded?: (response: any, uploadSuccess: UploadSuccessCallback, uploadError: UploadErrorCallback) => void;
+}

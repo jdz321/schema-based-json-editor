@@ -43,8 +43,14 @@ import { indexTemplateHtml, indexTemplateHtmlStatic } from './variables'
     'disableCollapse',
     'noSelect2',
     'minItemCountIfNeedFilter',
-    'monacoEditor'
-  ]
+    'monacoEditor',
+    'uploadOptions'
+  ],
+  provide() {
+    return {
+      uploadOptions: this.$props.uploadOptions
+    }
+  },
 })
 export class JSONEditor extends Vue {
   schema!: common.Schema
